@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchPosts } from './features/posts/postsSlice';
 import PostList from './components/PostList';
-
+//test
 function App() {
   const dispatch = useDispatch();
   const { posts, loading, error } = useSelector(state => state.posts);
