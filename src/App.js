@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchPosts } from './features/posts/postsSlice';
+import SearchBar from './components/SearchBar';
 import PostList from './components/PostList';
 //test
 function App() {
@@ -14,6 +15,7 @@ function App() {
   return (
     <div style={{ padding: '20px' }}>
       <h1>Reddit Client</h1>
+      <SearchBar />
       {loading && <p>Loading posts...</p>}
       {error && <p>Error: {error}</p>}
       {posts && <PostList posts={posts} />}
