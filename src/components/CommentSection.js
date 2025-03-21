@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 import { MessageSquare } from 'lucide-react';
 
-const CommentSection = ({ comments, setComments, showComments, setShowComments, numComments }) => {
+const CommentSection = ({ 
+  comments, 
+  setComments, 
+  showComments, 
+  setShowComments, 
+  numComments, 
+  isAuthenticated,
+  onRestrictedAction 
+}) => {
+
   const [newComment, setNewComment] = useState("");
 
   const handleToggleComments = () => {
@@ -9,6 +18,8 @@ const CommentSection = ({ comments, setComments, showComments, setShowComments, 
   };
 
   const handleAddComment = () => {
+    if (!isAuthenticated) return onRestrictedAction();
+
     if (newComment.trim() !== "") {
       const commentObject = { text: newComment, id: Date.now() };
       setComments([...comments, commentObject]);

@@ -1,9 +1,18 @@
 import React from 'react';
 import { ArrowUp, ArrowDown } from 'lucide-react';
 
-const VotingSection = ({ voteScore, setVoteScore, voteStatus, setVoteStatus, initialVoteCount }) => {
+const VotingSection = ({ 
+  voteScore, 
+  setVoteScore, 
+  voteStatus, 
+  setVoteStatus, 
+  initialVoteCount, 
+  isAuthenticated,
+  onRestrictedAction 
+}) => {
 
   const handleUpvote = () => {
+    if (!isAuthenticated) return onRestrictedAction();
     if (voteStatus === 'upvoted') {
       setVoteScore(initialVoteCount);
       setVoteStatus(null);
@@ -14,6 +23,7 @@ const VotingSection = ({ voteScore, setVoteScore, voteStatus, setVoteStatus, ini
   };
 
   const handleDownvote = () => {
+    if (!isAuthenticated) return onRestrictedAction();
     if (voteStatus === 'downvoted') {
       setVoteScore(initialVoteCount);
       setVoteStatus(null);
